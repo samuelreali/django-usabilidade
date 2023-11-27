@@ -1,14 +1,5 @@
 .env
 secret_key_django.txt
 db.sqlite3
-modeloapp/__pycache__/*
+projetoapp/__pycache__/*
 /apps/categories/__pycache__/*
-/apps/categories/migrations/*
-/apps/products/__pycache__/*
-/apps/products/migrations/*
-/apps/socialnetworks/__pycache__/*
-/apps/socialnetworks/migrations/*
-/apps/clients/__pycache__/*
-/apps/clients/migrations/*
-/apps/orders/__pycache__/*
-/apps/orders/migrations/*
