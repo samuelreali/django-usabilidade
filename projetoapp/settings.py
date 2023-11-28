@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'categories.apps.CategoriesConfig',
+    'restaurants.apps.RestaurantsConfig',
+    'orders.apps.OrdersConfig',
     'widget_tweaks',
     'core.apps.CoreConfig', 
 ]
@@ -90,7 +92,10 @@ DATABASES = {
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),    
-        'PORT': config('DB_PORT'),     
+        'PORT': config('DB_PORT'),
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        }     
     }
 }
 
