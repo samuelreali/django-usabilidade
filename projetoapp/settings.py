@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'categories.apps.CategoriesConfig',
+    'restaurants.apps.RestaurantsConfig',
+    'orders.apps.OrdersConfig',
     'widget_tweaks',
     'core.apps.CoreConfig', 
 ]
