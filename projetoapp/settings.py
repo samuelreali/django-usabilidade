@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'categories.apps.CategoriesConfig',
     'restaurants.apps.RestaurantsConfig',
     'orders.apps.OrdersConfig',
+    'products.apps.ProductsConfig',
     'widget_tweaks',
     'core.apps.CoreConfig', 
 ]
