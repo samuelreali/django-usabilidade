@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'widget_tweaks',
     'core.apps.CoreConfig', 
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
