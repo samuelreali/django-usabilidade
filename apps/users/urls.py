@@ -8,8 +8,8 @@ router = routers.DefaultRouter()
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('', views.findUsers, name='list_products'),
+    path('', views.list_users, name='list_users'),
     path('adicionar/', views.add_user, name='add_user'),
-   # path('editar/<int:id_product>/', views.edit_product, name='edit_product'),
-   # path('excluir/<int:id_product>/', views.delete_product, name='delete_product'),
+    path('excluir/<int:id_user>/', views.delete_user, name='delete_user'),
+    path('editar/<int:id_user>/', views.edit_user, name='edit_user'),
 ]
