@@ -5,7 +5,7 @@ from .forms import UserForm
 
 # Create your views here.
 
-# create
+
 def add_user(request):
     template_name = 'users/add_user.html'
     context = {}
@@ -20,8 +20,8 @@ def add_user(request):
     context['formuser'] = form
     return render(request, template_name, context)
 
-# read
-def findUsers(request):
+
+def list_users(request):
     template_name = 'users/list_users.html'
     users = Users.objects.filter()
     context = {
@@ -29,10 +29,23 @@ def findUsers(request):
     }
     return render(request, template_name, context)
 
-# update
-def updateUser():
-    print()
 
-# delete
-def deleteUser():
-    print()
+def edit_user(request, id_user):
+    template_name = 'users/add_user.html'
+    context = {}
+    user = get_object_or_404(Users, id=id_user)
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES,  instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('users:list_users')
+    form = UserForm(instance=user)
+    context['formuser'] = form
+    return render(request, template_name, context)
+
+
+def delete_user(request, id_user):
+    print(id_user)
+    user = Users.objects.get(id=id_user)
+    user.delete()
+    return redirect('users:list_users')

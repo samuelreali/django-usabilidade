@@ -15,8 +15,3 @@ class Users(models.Model):
 
     def __str__(self):
         return self.email
-
-    def save(self, *args, **kwargs):
-        # Antes de salvar, criptografa a senha usando make_password
-        self.password = make_password(self.password)
-        super().save(*args, **kwargs)
