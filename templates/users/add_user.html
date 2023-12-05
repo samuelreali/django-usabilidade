@@ -34,6 +34,11 @@
                     {{ formuser.email|add_class:"form-control" }}
                 </div>
                 <div class="form-group">
+                    <label for="{{ form.profile.id_for_label }}">Perfil</label>
+                    {{ formuser.profile |add_class:"form-control" }}
+                </div>
+                
+                <div class="form-group">
                     <label for="{{ form.category.id_for_label }}">senha</label>
                     {{ formuser.password|add_class:"form-control" }}
                 </div>
