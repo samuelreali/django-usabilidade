@@ -1,10 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from .models import Users
 from .forms import UserForm
 
 # Create your views here.
 
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            messages.success(request, ("Ouve um erro ao fazer login, tente novamente."))
+            return redirect('users:login')
+    else:
+        template_name = 'users/login.html'
+        context = {}
+        return render(request, template_name, context)
 
 def add_user(request):
     template_name = 'users/add_user.html'

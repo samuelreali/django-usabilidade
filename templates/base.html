@@ -42,9 +42,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:list_users' %}">Usuários</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+                </li>
             </ul>
         </div>
     </nav>
+    <br />
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
     <!-- FIM: Bloco do Bootstrap a ser incluído -->
     {% block body %}
 
