@@ -25,6 +25,7 @@
                     <th scope="col">Data de fabricacao</th>
                     <th scope="col">Ativo</th>
                     <th scope="col">Categoria</th>
+                    <th scope="col">Preço</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     </tr>
@@ -44,6 +45,7 @@
                                 {% endif %}
                             </td>
                             <td>{{ product.category }}</td>
+                            <td>{{ price }}
                             <td>
                                 <a href="{% url 'products:edit_product' product.id %}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
