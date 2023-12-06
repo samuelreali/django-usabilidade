@@ -3,10 +3,11 @@ from django.db import models
 
 # Create your models here.
 class Cart(models.Model):
-    name = models.CharField('Nome do Cliente', max_length=50)
+    name = models.CharField('Nome do Cliente', max_length=50) #cliente
     date_order = models.DateField('Data do Pedido', auto_now=False, auto_now_add=False) 
     delivery = models.BooleanField('Ativo', default=False)
-    
+    #pedido
+
     class Meta:
         verbose_name = 'Carrinho'
         verbose_name_plural = 'Carrinhos'
