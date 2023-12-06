@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .models import Users
-from .forms import UserForm
+from .forms import RegisterUserForm
+""" from .forms import UserForm """
 
 # Create your views here.
 
@@ -28,18 +30,36 @@ def logout_user(request):
     return redirect('/')
 
 def add_user(request):
+    if request.method == "POST":
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, ("Cadastro efetuado com sucesso!"))
+            return redirect('/')
+    else:
+        form = RegisterUserForm()
+
+    return render(request, 'users/add_user.html', {
+        'form':form,
+    })
+
+""" def add_user(request):
     template_name = 'users/add_user.html'
     context = {}
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             f = form.save(commit=False)
             f.save()
             form.save_m2m()
             return redirect('users:list_users')
-    form = UserForm()
+    form = UserCreationForm()
     context['formuser'] = form
-    return render(request, template_name, context)
+    return render(request, template_name, context) """
 
 
 def list_users(request):
@@ -56,11 +76,11 @@ def edit_user(request, id_user):
     context = {}
     user = get_object_or_404(Users, id=id_user)
     if request.method == 'POST':
-        form = UserForm(request.POST, request.FILES,  instance=user)
+        form = RegisterUserForm(request.POST, request.FILES,  instance=user)
         if form.is_valid():
             form.save()
             return redirect('users:list_users')
-    form = UserForm(instance=user)
+    form = RegisterUserForm(instance=user)
     context['formuser'] = form
     return render(request, template_name, context)
 
