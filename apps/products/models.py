@@ -7,6 +7,7 @@ class Product(models.Model):
     date_fabrication = models.DateField('Data Fabricacao', auto_now=False, auto_now_add=False) 
     is_active = models.BooleanField('Ativo', default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    price = models.DecimalField('Preco', max_digits=10, decimal_places=2)
     
     class Meta:
         verbose_name = 'Produto'
