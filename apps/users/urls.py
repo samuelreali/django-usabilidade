@@ -7,6 +7,8 @@ app_name = 'users'
 router = routers.DefaultRouter()
 
 urlpatterns = [
+    path('login_user/', views.login_user, name='login'),
+    path('logout_user', views.logout_user, name='logout'),
     path('api/', include(router.urls)),
     path('', views.list_users, name='list_users'),
     path('adicionar/', views.add_user, name='add_user'),
