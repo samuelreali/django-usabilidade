@@ -4,6 +4,7 @@ from django.db import models
 class Order(models.Model):
     name = models.CharField('Nome', max_length=50)
     description = models.TextField('Descricao', max_length=100)
+    #produto
     
     class Meta:
         verbose_name = 'Ordem'
