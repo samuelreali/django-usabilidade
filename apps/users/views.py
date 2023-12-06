@@ -22,6 +22,11 @@ def login_user(request):
         context = {}
         return render(request, template_name, context)
 
+def logout_user(request):
+    logout(request)
+    messages.success(request, ("Você foi deslogado com sucesso!"))
+    return redirect('/')
+
 def add_user(request):
     template_name = 'users/add_user.html'
     context = {}

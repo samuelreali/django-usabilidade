@@ -42,9 +42,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:list_users' %}">Usuários</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:login' %}">Login</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:logout' %}">Sair</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'users:login' %}">Login</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
