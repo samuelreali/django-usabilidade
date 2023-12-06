@@ -2,58 +2,40 @@
 
 {% block title %}
 
-    carrinho - {{ block.super }}
-
 {% endblock title %}
 
 {% block body %}
 
-    <div class="container">
-        <br />
-        <h5><b>carrinho</b></h5>
-        <br />
-            <a href="{% url 'core:add_cart' %}">adicionar ao carrinho</a>
-            <br />
-            <br />
-            <div class="row">
-            <div class ="col-md-12">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Data do Pedido</th>
-                            <th scope="col">Entrega</th>
-                            <!-- <th scope="col"></th> -->
-                            <th scope="col"></th>
-                        </tr>   
+<!-- Codigo html especifico desse arquivo -->
+<div class="container">
+    <br />
+    <h5><b>Lista de Produtos</b></h5>
+    <br />
+    <div class="row">
+        <div class ="col-md-12">
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Preço</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                </tr>
             </thead>
             <tbody>
-                {% for item in carts %}
-                <tr>
-                    <th scope="row">{{ item.id }}</th>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.date_order }}</td>
-                    <td>{{ item.delivery }}</td>
-                
-                    <td>    
-                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ item.id }}')">Excluir</a>
-                    </td>                    
-                </tr> 
+                {% for product in products %}
+                    <tr>
+                        <th scope="row">{{ product.id }}</th>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ price }}</td>
+                    </tr> 
                 {% endfor %}
             </tbody>
-                </table>
-            </div>
+            </table>
         </div>
     </div>
-    
-    <script>
-        function confirmDelete(itemId) {
-            var confirmation = confirm("Tem certeza que deseja excluir este pedido?");
-            if (confirmation) {
-                // Se o usuário confirmar, redirecione para a URL de exclusão
-                window.location.href = "{% url 'core:delete_cart' 0 %}".replace('0', itemId);
-            }
-        }
-    </script>
+</div>
+
 {% endblock body %}

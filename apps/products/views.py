@@ -25,7 +25,7 @@ def add_product(request):
     return render(request, template_name, context)
 
 def list_products(request):
-    template_name = 'products/list_products.html'
+    template_name = 'products/list_products.html',
     products = Product.objects.filter()
     context = {
         'products': products

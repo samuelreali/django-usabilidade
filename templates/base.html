@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <style>
-        body {
-            padding-top: 56px;
-        }
         .navbar-brand {
             font-weight: bold;
         }
@@ -22,14 +19,14 @@
             border-color: #fff;
         }
     </style>
-    <title>{% block title %}Gestão de restaurante{% endblock title %}</title>
+    <title>{% block title %}Restaurante Genérico{% endblock title %}</title>
 </head>
 <body>
     <!-- INICIO: Bloco do Bootstrap a ser incluído -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="/">Gestão de Restaurante</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Restaurante Genérico</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarsExample05">
             <ul class="navbar-nav">
@@ -38,6 +35,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'categories:list_categories' %}">Categorias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/produtos">Cárdapio</a>
                 </li>
                 {% if user.is_superuser %}
                     <li class="nav-item">
