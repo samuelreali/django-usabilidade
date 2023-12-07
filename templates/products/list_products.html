@@ -22,8 +22,8 @@
                     <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Data de fabricacao</th>
                     <th scope="col">Ativo</th>
+                    <th scope="col">Carrinho</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Preço</th>
                     <th scope="col"></th>
@@ -35,13 +35,20 @@
                         <tr>
                             <th scope="row">{{ product.id }}</th>
                             <td>{{ product.name }}</td>
-                            <td>{{ product.date_fabrication }}</td>
                             <td>
                                 {% if product.is_active == True %}
                                     Ativo
                                 {% endif %}
                                 {% if product.is_active == False %}
                                     Inativo
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if product.is_cart == True %}
+                                    Ta no carrinho
+                                {% endif %}
+                                {% if product.is_cart == False %}
+                                    Não está
                                 {% endif %}
                             </td>
                             <td>{{ product.category }}</td>
@@ -52,7 +59,7 @@
                             <td>    
                                 <a href="{% url 'products:delete_product' product.id %}" class="btn btn-danger btn-sm ">Excluir</a>
                             </td>
-                        </tr> 
+                        </tr>
                     {% endfor %}
                 </tbody>
                 </table>

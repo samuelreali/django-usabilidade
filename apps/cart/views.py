@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CartForm
 from .models import Cart
+from products.models import Product
 
 # Create your views here.
 
@@ -19,8 +20,8 @@ def add_cart(request):
     return render(request, template_name, context)
 
 def list_carts(request):
-    template_name = 'core/home.html'
-    carts = Cart.objects.filter()
+    template_name = 'cart/list_cart.html'
+    carts = Product.objects.filter()
     context = {
         'carts': carts
     }
