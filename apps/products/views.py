@@ -24,6 +24,10 @@ def add_product(request):
     context['form'] = form
     return render(request, template_name, context)
 
+def add_chart(request, id_product):
+    Product.objects.filter(id=id_product).update(is_cart=True)
+    return redirect('core:home')
+
 def list_products(request):
     template_name = 'products/list_products.html',
     products = Product.objects.filter()

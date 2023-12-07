@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from products.views import list_products
 from cart.views import add_cart, list_carts, delete_cart
 from users.views import login_user
 

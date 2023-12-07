@@ -10,9 +10,9 @@
 
     <div class="container">
         <br />
-        <h5><b>carrinho</b></h5>
+        <h5><b>Meu carrinho</b></h5>
         <br />
-            <a href="{% url 'core:add_cart' %}">adicionar ao carrinho</a>
+            <a href="{% url 'cart:add_cart' %}">adicionar ao carrinho</a>
             <br />
             <br />
             <div class="row">
@@ -22,24 +22,26 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Data do Pedido</th>
-                            <th scope="col">Entrega</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Preço</th>
                             <!-- <th scope="col"></th> -->
                             <th scope="col"></th>
                         </tr>   
             </thead>
             <tbody>
                 {% for item in carts %}
-                <tr>
-                    <th scope="row">{{ item.id }}</th>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.date_order }}</td>
-                    <td>{{ item.delivery }}</td>
-                
-                    <td>    
-                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ item.id }}')">Excluir</a>
-                    </td>                    
-                </tr> 
+                    {% if item.is_cart == True %}
+                    <tr>
+                        <th scope="row">{{ item.id }}</th>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>R${{ item.price }}</td>
+                    
+                        <td>    
+                            <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ item.id }}')">Excluir</a>
+                        </td>                    
+                    </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
                 </table>
