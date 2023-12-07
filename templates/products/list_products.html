@@ -23,7 +23,6 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Ativo</th>
-                    <th scope="col">Carrinho</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Preço</th>
                     <th scope="col"></th>
@@ -41,14 +40,6 @@
                                 {% endif %}
                                 {% if product.is_active == False %}
                                     Inativo
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if product.is_cart == True %}
-                                    Ta no carrinho
-                                {% endif %}
-                                {% if product.is_cart == False %}
-                                    Não está
                                 {% endif %}
                             </td>
                             <td>{{ product.category }}</td>
