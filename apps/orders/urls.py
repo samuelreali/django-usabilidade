@@ -8,5 +8,5 @@ router = routers.DefaultRouter()
 router.register('ordens', views.OrderViewSet, basename='ordens')
 
 urlpatterns = [
-    path('', include(router.urls) )
+    path('', views.list_orders, name='list_orders'),
 ]

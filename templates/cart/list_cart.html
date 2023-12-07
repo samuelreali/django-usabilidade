@@ -12,46 +12,48 @@
         <br />
         <h5><b>Meu carrinho</b></h5>
         <br />
-            <a href="{% url 'cart:add_cart' %}">adicionar ao carrinho</a>
-            <br />
             <br />
             <div class="row">
             <div class ="col-md-12">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Preço</th>
                             <!-- <th scope="col"></th> -->
                             <th scope="col"></th>
                         </tr>   
-            </thead>
-            <tbody>
-                {% for item in carts %}
-                    {% if item.is_cart == True %}
-                    <tr>
-                        <th scope="row">{{ item.id }}</th>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.category }}</td>
-                        <td>R${{ item.price }}</td>
-                    
-                        <td>    
-                            <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ item.id }}')">Excluir</a>
-                        </td>                    
-                    </tr>
-                    {% endif %}
-                {% endfor %}
-            </tbody>
+                    </thead>
+                    <tbody>
+                        {% for item in carts %}
+                            {% if item.is_cart == True %}
+                            <tr>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.category }}</td>
+                                <td>R${{ item.price }}</td>
+                                <td>    
+                                    <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ item.id }}')"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16">
+                                        <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793z"/>
+                                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                    </svg></a>
+                                </td>                    
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
                 </table>
+                <form action="{% url 'cart:add_order' %}" method="POST" enctype="multipart/form-data"> 
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Fazer pedido</button>
+                </form>
             </div>
         </div>
     </div>
     
     <script>
         function confirmDelete(itemId) {
-            var confirmation = confirm("Tem certeza que deseja excluir este pedido?");
+            var confirmation = confirm("Tem certeza que deseja remover do carrinho?");
             if (confirmation) {
                 // Se o usuário confirmar, redirecione para a URL de exclusão
                 window.location.href = "{% url 'core:delete_cart' 0 %}".replace('0', itemId);
