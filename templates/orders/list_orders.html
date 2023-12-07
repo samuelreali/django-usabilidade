@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Pedidos - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Pedidos</b></h5>
+        <br />
+        <br />
+        <div class="row">
+            <div class ="col-md-12">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for order in orders %}
+                            <th scope="row">{{ order.id }}</th>
+                            <td>{{ order.name }}</td>
+                            <td>{{ order.price }}</td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

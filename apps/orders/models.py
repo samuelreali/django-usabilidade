@@ -1,9 +1,9 @@
 from django.db import models
+from users.models import Users
 
 # Create your models here.
 class Order(models.Model):
-    name = models.CharField('Nome', max_length=50)
-    description = models.TextField('Descricao', max_length=100)
+    price = models.DecimalField('Preco', default=0, max_digits=10, decimal_places=2)
     #produto
     
     class Meta:
